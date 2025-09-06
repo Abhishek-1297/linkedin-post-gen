@@ -2,19 +2,101 @@
 import os
 import time
 import json
+import base64
+from pathlib import Path
+
 import streamlit as st
 from dotenv import load_dotenv
 from groq import Groq
 
 # -------------------------
-# Setup
+# Paths & Assets
+# -------------------------
+HERE = Path(__file__).parent
+ASSETS = HERE / "assets"
+
+# -------------------------
+# Load secrets / client
 # -------------------------
 load_dotenv()
 API_KEY = os.getenv("GROQ_API_KEY")
 client = Groq(api_key=API_KEY) if API_KEY else None
 
-st.set_page_config(page_title="LinkedIn Post Generator — Polished MVP", page_icon="📝", layout="wide")
-st.title("📝 LinkedIn Post Generator — Polished MVP")
+# -------------------------
+# Helper: load image as base64 (for embedding in HTML)
+# -------------------------
+def load_image_base64(path: Path):
+    try:
+        with open(path, "rb") as f:
+            raw = f.read()
+        ext = path.suffix.lower().lstrip(".")
+        mime = "image/png"
+        if ext in ("jpg", "jpeg"):
+            mime = "image/jpeg"
+        elif ext == "svg":
+            mime = "image/svg+xml"
+        return f"data:{mime};base64,{base64.b64encode(raw).decode()}"
+    except Exception:
+        return None
+
+# pick a sensible logo candidate from assets
+_logo_candidates = [
+    ASSETS / "logo.png",
+    ASSETS / "logo 1.png",
+    ASSETS / "logo1.png",
+    ASSETS / "icon.png",
+    ASSETS / "fav icon 1.png",
+]
+logo_base64 = None
+for p in _logo_candidates:
+    if p.exists():
+        logo_base64 = load_image_base64(p)
+        break
+
+# -------------------------
+# Page config (must run before other st.* UI calls)
+# -------------------------
+# Use emoji as page_icon to avoid path issues; the header will embed the real logo
+st.set_page_config(page_title="InkLink — LinkedIn Post Generator", page_icon="🖋", layout="wide")
+
+# -------------------------
+# Load CSS (if exists)
+# -------------------------
+css_file = ASSETS / "styles.css"
+if css_file.exists():
+    try:
+        with open(css_file, "r", encoding="utf-8") as f:
+            st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+    except Exception as e:
+        st.write("Could not load custom CSS:", e)
+
+# -------------------------
+# App Header (inline logo + text), safe if logo missing
+# -------------------------
+if logo_base64:
+    header_html = f"""
+    <div class="app-header">
+        <img src="{logo_base64}" class="app-logo" alt="InkLink logo" />
+        <div class="app-text">
+            <h1 class="app-title">InkLink</h1>
+            <p class="app-subtitle">AI-powered LinkedIn Post Generator</p>
+        </div>
+    </div>
+    <hr>
+    """
+else:
+    # fallback: text-only header
+    header_html = """
+    <div class="app-header">
+        <div class="app-text">
+            <h1 class="app-title">InkLink</h1>
+            <p class="app-subtitle">AI-powered LinkedIn Post Generator</p>
+        </div>
+    </div>
+    <hr>
+    """
+
+st.markdown(header_html, unsafe_allow_html=True)
 
 # -------------------------
 # Behaviour maps (from your JSON)
@@ -315,4 +397,3 @@ if generate:
                 st.download_button("⬇️ Download ALL Drafts (.txt)", data=joined, file_name="linkedin_all_drafts.txt", mime="text/plain")
 
                 st.success("Done — review drafts above. Select any draft to copy it to your clipboard, or use the download buttons.")
-

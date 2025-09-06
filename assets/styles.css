@@ -1,0 +1,130 @@
+/* --------------------
+   Global Styles
+-------------------- */
+body, .stApp {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9fb;
+    color: #333333;
+}
+
+/* --------------------
+   Header & Branding
+-------------------- */
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.app-header img {
+    width: 50px;
+    height: auto;
+}
+
+.app-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0;
+    color: #1e1e2f;
+    display: inline-block;
+}
+
+.app-subtitle {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #555555;
+    margin-top: -6px;
+}
+
+/* --------------------
+   Section Dividers
+-------------------- */
+hr, .stMarkdown > hr {
+    border: none;
+    height: 1px;
+    background: #e2e2e2;
+    margin: 20px 0;
+}
+
+/* --------------------
+   Selectboxes & Inputs
+-------------------- */
+.stSelectbox label, .stTextArea label, .stSlider label {
+    font-weight: 600;
+    color: #222222;
+}
+
+.stTextArea textarea {
+    border-radius: 8px;
+    border: 1px solid #d9d9d9;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 10px;
+}
+
+.stTextArea textarea:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 1px #6c63ff;
+}
+
+/* --------------------
+   Buttons
+-------------------- */
+.stButton button {
+    background-color: #6c63ff;
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    transition: all 0.2s ease-in-out;
+}
+
+.stButton button:hover {
+    background-color: #5a52d1;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* --------------------
+   Download Buttons
+-------------------- */
+.stDownloadButton button {
+    background-color: #f1f1f1;
+    color: #333333;
+    border-radius: 6px;
+    border: 1px solid #cccccc;
+    font-size: 0.9rem;
+    padding: 6px 14px;
+    transition: background-color 0.2s ease;
+}
+
+.stDownloadButton button:hover {
+    background-color: #e4e4e4;
+}
+
+/* --------------------
+   Draft Section
+-------------------- */
+h2, .stSubheader {
+    font-size: 1.4rem !important;
+    font-weight: 700;
+    margin-top: 25px;
+    color: #222222;
+}
+
+textarea[readonly] {
+    background-color: #fafafa !important;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0 !important;
+    font-size: 0.9rem;
+}
+
+/* --------------------
+   Footnotes & Help Text
+-------------------- */
+div[style*="font-style: italic"] {
+    font-size: 0.85rem !important;
+    color: #666666 !important;
+}
