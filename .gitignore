@@ -1,0 +1,22 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
+# Streamlit
+.streamlit/
+
+# VSCode
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
+# Ignore local API keys and env files
+*.env
+product/API Keys.txt
