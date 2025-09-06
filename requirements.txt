@@ -1,3 +1,4 @@
 streamlit
 groq
 python-dotenv
+st-social-media-links
