@@ -1,5 +1,7 @@
-# Environment
+@'
+# Local environment & secrets
 .env
+*.env
 
 # Python
 __pycache__/
@@ -8,15 +10,18 @@ __pycache__/
 *.pyd
 *.sqlite3
 
-# Streamlit
+# Streamlit / Editor / OS
 .streamlit/
-
-# VSCode
 .vscode/
-
-# OS
 Thumbs.db
 .DS_Store
-# Ignore local API keys and env files
-*.env
+
+# Local secret files / installers (keep common culprits out of git)
 product/API Keys.txt
+node-v*.msi
+*.msi
+get-pip.py
+'@ | Set-Content -Path .gitignore -Encoding utf8
+
+# Show the file so you can confirm
+Get-Content .gitignore
