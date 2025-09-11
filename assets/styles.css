@@ -7,6 +7,13 @@ body, .stApp {
     color: #333333;
 }
 
+/* Dark theme override */
+[data-theme="dark"] body, 
+[data-theme="dark"] .stApp {
+    background-color: #1e1e1e !important;
+    color: #f5f5f5 !important;
+}
+
 /* --------------------
    Header Bar
 -------------------- */
@@ -49,6 +56,10 @@ hr, .stMarkdown > hr {
     background: #ddd;
     margin: 20px 0;
 }
+[data-theme="dark"] hr,
+[data-theme="dark"] .stMarkdown > hr {
+    background: #444;
+}
 
 /* --------------------
    Selectboxes & Inputs
@@ -57,6 +68,11 @@ hr, .stMarkdown > hr {
     font-weight: 600;
     color: #222;
 }
+[data-theme="dark"] .stSelectbox label, 
+[data-theme="dark"] .stTextArea label, 
+[data-theme="dark"] .stSlider label {
+    color: #f5f5f5 !important;
+}
 
 .stTextArea textarea {
     border-radius: 10px;
@@ -64,6 +80,11 @@ hr, .stMarkdown > hr {
     font-size: 0.95rem;
     padding: 12px;
     transition: border 0.2s ease;
+}
+[data-theme="dark"] .stTextArea textarea {
+    background-color: #2a2a2a;
+    border: 1px solid #555;
+    color: #fff;
 }
 
 .stTextArea textarea:focus {
@@ -83,7 +104,6 @@ hr, .stMarkdown > hr {
     padding: 10px 20px;
     transition: all 0.2s ease-in-out;
 }
-
 .stButton button:hover {
     transform: translateY(-2px);
     box-shadow: 0 3px 8px rgba(0,0,0,0.2);
@@ -101,9 +121,16 @@ hr, .stMarkdown > hr {
     padding: 7px 14px;
     transition: background-color 0.2s ease;
 }
-
 .stDownloadButton button:hover {
     background-color: #e0e0e0;
+}
+[data-theme="dark"] .stDownloadButton button {
+    background-color: #333;
+    color: #f5f5f5;
+    border: 1px solid #555;
+}
+[data-theme="dark"] .stDownloadButton button:hover {
+    background-color: #444;
 }
 
 /* --------------------
@@ -117,7 +144,10 @@ hr, .stMarkdown > hr {
     border: 1px solid #e6e6e6;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-
+[data-theme="dark"] .draft-card {
+    background: #2a2a2a;
+    border: 1px solid #444;
+}
 .draft-card h2 {
     margin-top: 0;
     font-size: 1.2rem;
@@ -132,13 +162,14 @@ div[style*="font-style: italic"] {
     font-size: 0.85rem !important;
     color: #777 !important;
 }
+[data-theme="dark"] div[style*="font-style: italic"] {
+    color: #bbb !important;
+}
 
 /* --------------------
    Fix text visibility for Radio & Checkbox
    Works for both Light and Dark themes
 -------------------- */
-
-/* Default (Light) */
 .stRadio label,
 .stRadio div[role="radiogroup"] label,
 .stRadio div[role="radiogroup"] span,
@@ -148,8 +179,6 @@ div[style*="font-style: italic"] {
 .stSelectbox span {
     color: #000 !important;
 }
-
-/* Dark mode override */
 [data-theme="dark"] .stRadio label,
 [data-theme="dark"] .stRadio div[role="radiogroup"] label,
 [data-theme="dark"] .stRadio div[role="radiogroup"] span,
