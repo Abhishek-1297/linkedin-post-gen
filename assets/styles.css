@@ -132,3 +132,12 @@ div[style*="font-style: italic"] {
     font-size: 0.85rem !important;
     color: #777 !important;
 }
+/* Fix invisible text for radio/checkbox labels */
+.stRadio label, .stRadio div[role="radiogroup"] label, .stRadio span {
+    color: #000000 !important;  /* change to black (or your theme color) */
+}
+
+/* Optional: make sure selectbox/dropdown text is also visible */
+.stSelectbox label, .stSelectbox span {
+    color: #000000 !important;
+}
