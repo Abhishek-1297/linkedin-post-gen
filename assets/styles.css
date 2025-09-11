@@ -1,209 +1,98 @@
 /* --------------------
-   Global Styles
+   GENERAL STYLES
 -------------------- */
-body, .stApp {
-    font-family: 'Inter', sans-serif;
-    background-color: #f9f9fb;
-    color: #333333;
+
+html, body {
+    font-family: "Inter", sans-serif !important;
+    background-color: #ffffff !important;
+    color: #222 !important;
 }
 
-/* Dark theme override */
-[data-theme="dark"] body, 
-[data-theme="dark"] .stApp {
-    background-color: #1e1e1e !important;
-    color: #f5f5f5 !important;
+/* Streamlit main background */
+section.main {
+    background-color: #ffffff !important;
 }
 
-/* --------------------
-   Header Bar
--------------------- */
-.app-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 20px;
-    border-radius: 12px;
-    background: linear-gradient(90deg, #6c63ff, #9a79ff);
-    color: #fff;
-    margin-bottom: 25px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Inter", sans-serif !important;
+    font-weight: 600 !important;
+    color: #222 !important;
 }
 
-.app-header img {
-    width: 42px;
-    height: auto;
+/* Buttons */
+.stButton>button {
+    background: #6c63ff !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 8px 16px !important;
+    transition: background 0.3s ease !important;
 }
 
-.app-title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin: 0;
-    color: #fff;
+.stButton>button:hover {
+    background: #574fd6 !important;
 }
 
-.app-subtitle {
-    font-size: 0.95rem;
-    font-weight: 400;
-    color: #f0f0ff;
-}
-
-/* --------------------
-   Section Dividers
--------------------- */
-hr, .stMarkdown > hr {
-    border: none;
-    height: 1px;
-    background: #ddd;
-    margin: 20px 0;
-}
-[data-theme="dark"] hr,
-[data-theme="dark"] .stMarkdown > hr {
-    background: #444;
-}
-
-/* --------------------
-   Selectboxes & Inputs
--------------------- */
-.stSelectbox label, .stTextArea label, .stSlider label {
-    font-weight: 600;
-    color: #222;
-}
-[data-theme="dark"] .stSelectbox label, 
-[data-theme="dark"] .stTextArea label, 
-[data-theme="dark"] .stSlider label {
-    color: #f5f5f5 !important;
-}
-
+/* Inputs */
+.stTextInput input,
+.stSelectbox select,
 .stTextArea textarea {
-    border-radius: 10px;
-    border: 1px solid #d9d9d9;
-    font-size: 0.95rem;
-    padding: 12px;
-    transition: border 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-}
-[data-theme="dark"] .stTextArea textarea {
-    background-color: #2a2a2a;
-    border: 1px solid #555;
-    color: #fff;
-}
-
-.stTextArea textarea:focus {
-    border-color: #6c63ff;
-    box-shadow: 0 0 0 2px rgba(108,99,255,0.3);
+    border-radius: 6px !important;
+    border: 1px solid #ccc !important;
+    padding: 8px 10px !important;
+    font-size: 14px !important;
 }
 
 /* --------------------
-   Buttons
+   RADIO & CHECKBOX LABELS
+   - Always dark/grey text (since background is white)
+   - Clear selected state (checkbox-like highlight)
 -------------------- */
-.stButton button {
-    background: linear-gradient(90deg, #6c63ff, #9a79ff);
-    color: #fff;
-    font-weight: 600;
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    transition: all 0.2s ease-in-out;
-}
-.stButton button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-}
 
-/* --------------------
-   Download Buttons
--------------------- */
-.stDownloadButton button {
-    background-color: #f1f1f1;
-    color: #333;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 0.9rem;
-    padding: 7px 14px;
-    transition: background-color 0.2s ease;
-}
-.stDownloadButton button:hover {
-    background-color: #e0e0e0;
-}
-[data-theme="dark"] .stDownloadButton button {
-    background-color: #333;
-    color: #f5f5f5;
-    border: 1px solid #555;
-}
-[data-theme="dark"] .stDownloadButton button:hover {
-    background-color: #444;
-}
-
-/* --------------------
-   Card Style for Drafts
--------------------- */
-.draft-card {
-    background: #fff;
-    padding: 16px 20px;
-    margin: 14px 0;
-    border-radius: 12px;
-    border: 1px solid #e6e6e6;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-[data-theme="dark"] .draft-card {
-    background: #2a2a2a;
-    border: 1px solid #444;
-}
-.draft-card h2 {
-    margin-top: 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #6c63ff;
-}
-
-/* --------------------
-   Footnotes & Help Text
--------------------- */
-div[style*="font-style: italic"] {
-    font-size: 0.85rem !important;
-    color: #777 !important;
-}
-[data-theme="dark"] div[style*="font-style: italic"] {
-    color: #bbb !important;
-}
-
-/* --------------------
-   FIX: Radio & Checkbox labels across all themes
--------------------- */
 .stRadio div[role="radiogroup"] label,
-.stRadio div[role="radiogroup"] span,
-.stCheckbox label,
-.stCheckbox span {
+.stCheckbox label {
     display: flex !important;
     align-items: center !important;
-    gap: 8px;
-    margin: 4px 0;
-    font-weight: 500;
+    gap: 8px !important;
+    margin: 4px 0 !important;
+    padding: 6px 10px !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    color: #222 !important;              /* Always visible dark text */
+    background: #fff !important;         /* White background in all themes */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Ensure inner spans inherit dark text */
+.stRadio div[role="radiogroup"] label span,
+.stCheckbox label span {
     color: inherit !important;
-    background: transparent !important;
 }
 
-/* Dark theme text color */
-[data-theme="dark"] .stRadio div[role="radiogroup"] label,
-[data-theme="dark"] .stRadio div[role="radiogroup"] span,
-[data-theme="dark"] .stCheckbox label,
-[data-theme="dark"] .stCheckbox span {
-    color: #f1f1f1 !important;
+/* Selected state — purple accent bar + soft highlight */
+.stRadio div[role="radiogroup"] label[aria-checked="true"],
+.stCheckbox label[aria-checked="true"] {
+    border-left: 4px solid #6c63ff !important;
+    background: #f3f0ff !important;      /* Light purple highlight */
+    font-weight: 600 !important;
+    box-shadow: 0 2px 6px rgba(108, 99, 255, 0.15) !important;
 }
 
-/* Selected state highlight */
-[data-theme="dark"] .stRadio div[role="radiogroup"] label[aria-checked="true"],
-[data-theme="dark"] .stRadio div[role="radiogroup"] span[aria-checked="true"],
-[data-theme="dark"] .stCheckbox label[aria-checked="true"],
-[data-theme="dark"] .stCheckbox span[aria-checked="true"] {
-    background: rgba(108, 99, 255, 0.15) !important;
-    border-radius: 6px;
-    padding: 4px 8px;
-    color: #ffffff !important;
-    font-weight: 600;
+/* Radio/checkbox accent (the dot/box itself) */
+.stRadio input[type="radio"],
+.stCheckbox input[type="checkbox"] {
+    accent-color: #6c63ff !important;
+    margin-right: 6px !important;
+    width: 16px !important;
+    height: 16px !important;
 }
 
-/* Accent color for radio/checkbox inputs */
-[data-baseweb="radio"] input[type="radio"],
-[data-baseweb="checkbox"] input[type="checkbox"] {
-    accent-color: #6c63ff;
+/* --------------------
+   FOOTER
+-------------------- */
+footer {
+    visibility: hidden !important;
 }
