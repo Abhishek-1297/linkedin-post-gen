@@ -134,20 +134,28 @@ div[style*="font-style: italic"] {
 }
 
 /* --------------------
-   Fix invisible text for radio & checkbox options
+   Fix text visibility for Radio & Checkbox
+   Works for both Light and Dark themes
 -------------------- */
+
+/* Default (Light) */
 .stRadio label,
 .stRadio div[role="radiogroup"] label,
 .stRadio div[role="radiogroup"] span,
 .stCheckbox label,
-.stCheckbox span {
-    color: #000000 !important; /* force visible text */
-    font-weight: 500 !important; /* optional, improves readability */
+.stCheckbox span,
+.stSelectbox label,
+.stSelectbox span {
+    color: #000 !important;
 }
 
-/* --------------------
-   Ensure dropdowns are visible
--------------------- */
-.stSelectbox label, .stSelectbox span {
-    color: #000000 !important;
+/* Dark mode override */
+[data-theme="dark"] .stRadio label,
+[data-theme="dark"] .stRadio div[role="radiogroup"] label,
+[data-theme="dark"] .stRadio div[role="radiogroup"] span,
+[data-theme="dark"] .stCheckbox label,
+[data-theme="dark"] .stCheckbox span,
+[data-theme="dark"] .stSelectbox label,
+[data-theme="dark"] .stSelectbox span {
+    color: #fff !important;
 }
